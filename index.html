@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>just in | 止まりかけた現場に、突破力を。</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- 1. Fonts (最優先で読み込み) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+    <!-- 2. AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+    <!-- 3. Tailwind CSS Core -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 4. Tailwind CSS Configuration (コアの直後に実行) -->
     <script>
         tailwind.config = {
             theme: {
@@ -39,6 +40,7 @@
         }
     </script>
 
+    <!-- 5. Custom CSS -->
     <style>
         body {
             background-color: #F5F3F0;
@@ -46,11 +48,9 @@
             overflow-x: hidden;
             font-feature-settings: "palt";
         }
-        /* スムーススクロール */
         html {
             scroll-behavior: smooth;
         }
-        /* グリッドのシャープな境界線用 */
         .grid-border {
             border-color: #E9E6E1;
         }
@@ -58,6 +58,7 @@
 </head>
 <body class="font-sans antialiased">
 
+    <!-- Navigation -->
     <nav class="sticky top-0 z-50 w-full bg-justin-base border-b border-justin-gray px-4 md:px-8 py-4 flex justify-between items-center">
         <div class="flex items-baseline gap-2">
             <a href="#" class="font-inter font-black text-2xl tracking-tighter text-justin-main">just<span class="text-justin-accent">in</span></a>
@@ -79,6 +80,7 @@
         </div>
     </nav>
 
+    <!-- ① HERO SECTION -->
     <section class="w-full border-b border-justin-main bg-justin-white2">
         <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-69px)]">
             
@@ -121,6 +123,7 @@
         </div>
     </section>
 
+    <!-- ② WHY SECTION -->
     <section id="why" class="w-full border-b border-justin-main py-16 md:py-24 px-4 md:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -150,6 +153,7 @@
         </div>
     </section>
 
+    <!-- ③ WHAT WE DO SECTION -->
     <section id="services" class="w-full bg-justin-main text-white py-16 md:py-24 px-4 md:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="mb-12">
@@ -192,6 +196,7 @@
         </div>
     </section>
 
+    <!-- ④ HOW WE MOVE SECTION -->
     <section id="how-we-move" class="w-full bg-justin-white2 border-b border-justin-main py-16 md:py-24 px-4 md:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
@@ -244,6 +249,7 @@
         </div>
     </section>
 
+    <!-- ⑤ VALUE SECTION -->
     <section id="value" class="w-full bg-justin-main text-white py-20 px-4 md:px-8 relative overflow-hidden">
         <div class="absolute inset-0 font-inter font-black text-[12vw] text-white/[0.02] uppercase select-none pointer-events-none whitespace-nowrap -left-10 -bottom-10">
             KEEP MOVING FORWARD
@@ -282,6 +288,7 @@
         </div>
     </section>
 
+    <!-- ⑥ CASE SECTION -->
     <section id="case" class="w-full border-b border-justin-main py-16 md:py-24 px-4 md:px-8">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12">
@@ -365,6 +372,7 @@
         </div>
     </section>
 
+    <!-- ⑦ MESSAGE SECTION -->
     <section id="message" class="w-full bg-justin-white2 py-16 md:py-24 px-4 md:px-8 border-b border-justin-main">
         <div class="max-w-5xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
@@ -406,6 +414,7 @@
         </div>
     </section>
 
+    <!-- ⑧ CONTACT SECTION -->
     <section id="contact" class="w-full bg-justin-main text-white py-16 md:py-20 px-4 md:px-8 text-center">
         <div class="max-w-3xl mx-auto" data-aos="zoom-in">
             <span class="font-inter font-bold text-xs tracking-widest text-justin-accent block mb-4 uppercase">GET IN TOUCH</span>
@@ -418,7 +427,8 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto text-sm font-bold">
                 <a href="https://lin.ee/XOs6qml" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-[#24A148] hover:bg-[#1C8439] text-white py-3.5 px-4 transition-colors">
-                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    <!-- インラインSVGに変更して表示崩れを防止 -->
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.564.39.084.922.258 1.058.592.122.303.08.777.04 1.084l-.169 1.023c-.05.303-.243 1.185 1.048.646 1.291-.539 6.957-4.099 9.485-7.016 2.499-2.884 2.494-5.893 2.494-5.893zm-16.712 3.16h-1.638a.514.514 0 01-.514-.514v-4.148a.514.514 0 01.514-.514h.341a.514.514 0 01.514.514v3.292h.783a.514.514 0 01.514.514v.341a.515.515 0 01-.514.515zm2.934 0h-.342a.515.515 0 01-.514-.514v-4.148a.514.514 0 01.514-.514h.342c.284 0 .514.23.514.514v4.148a.514.514 0 01-.514.514zm3.922 0h-.385a.517.517 0 01-.417-.213l-1.921-2.529v2.228a.514.514 0 01-.514.514h-.341a.514.514 0 01-.514-.514v-4.148a.514.514 0 01.514-.514h.387c.16 0 .31.073.414.199l1.921 2.531v-2.216a.514.514 0 01.514-.514h.341a.514.514 0 01.514.514v4.148a.514.514 0 01-.516.516zm3.996-.856a.514.514 0 01-.514.514h-1.649a.514.514 0 01-.514-.514v-4.148a.514.514 0 01.514-.514h1.649a.514.514 0 01.514.514v.341a.514.514 0 01-.514.514h-.794v.693h.794a.514.514 0 01.514.514v.341a.514.514 0 01-.514.514h-.794v.74h.794a.514.514 0 01.514.514v.341z"/></svg>
                     LINE相談
                 </a>
                 <a href="mailto:support@justin-logi.jp" class="flex items-center justify-center gap-2 bg-justin-accent hover:bg-justin-accent/90 text-justin-main py-3.5 px-4 transition-colors">
@@ -434,6 +444,7 @@
         </div>
     </section>
 
+    <!-- ⑨ FOOTER SECTION -->
     <footer class="w-full bg-justin-main text-gray-400 py-12 px-4 md:px-8 border-t border-white/10 text-xs">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left space-y-2">
@@ -447,13 +458,26 @@
         </div>
     </footer>
 
+    <!-- 6. Scripts (すべてのHTML要素が描画し終わるボディの最下部で実行) -->
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        lucide.createIcons();
-        AOS.init({
-            once: true,
-            offset: 60,
-            duration: 800,
-            easing: 'ease-out-cubic'
+        // 外部スクリプトの読み込み完了を安全に待ってから実行
+        window.addEventListener('DOMContentLoaded', (event) => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    once: true,
+                    offset: 60,
+                    duration: 800,
+                    easing: 'ease-out-cubic'
+                });
+            }
         });
     </script>
 </body>
