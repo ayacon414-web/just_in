@@ -3,482 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>just in | 止まりかけた現場に、突破力を。</title>
+    <title>vintage beat ｜ find your Beat.</title>
     
-    <!-- 1. Fonts (最優先で読み込み) -->
+    <!-- Fonts: Archivo Black, Noto Sans JP, Caveat, Patrick Hand -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 
-    <!-- 2. AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- 3. Tailwind CSS Core -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- 4. Tailwind CSS Configuration (コアの直後に実行) -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        justin: {
-                            main: '#222222',       /* Charcoal Black */
-                            base: '#F5F3F0',       /* Warm White */
-                            accent: '#F2994A',     /* Rescue Orange */
-                            sub: '#5E6B57',        /* Deep Khaki */
-                            gray: '#E9E6E1',       /* Light Gray */
-                            white2: '#F3F0EB',     /* Sub White */
+                        vbeat: {
+                            black: '#2B2B2B',   /* Charcoal Black */
+                            paper: '#E7E2D9',   /* Warm Paper (主体) */
+                            red: '#B94A44',     /* Vintage Red (差し色) */
+                            blue: '#60768B',    /* Dusty Blue */
+                            purple: '#8E79A8',  /* Muted Purple */
+                            lime: '#B7BC78',    /* Vintage Lime */
                         }
                     },
                     fontFamily: {
-                        sans: ['"Zen Kaku Gothic New"', 'sans-serif'],
-                        inter: ['Inter', 'sans-serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        heading: ['"Archivo Black"', 'sans-serif'],
+                        hand1: ['"Caveat"', 'cursive'],
+                        hand2: ['"Patrick Hand"', 'cursive'],
                     }
                 }
             }
         }
     </script>
 
-    <!-- 5. Custom CSS -->
     <style>
         body {
-            background-color: #F5F3F0;
-            color: #222222;
-            overflow-x: hidden;
+            background-color: #E7E2D9;
+            color: #2B2B2B;
             font-feature-settings: "palt";
+            letter-spacing: 0.05em;
+            overflow-x: hidden;
         }
+        /* ZINEのレトロ印刷・微細なテクスチャ感をCSSで表現 */
+        .zine-grain {
+            background-image: radial-gradient(rgba(43, 43, 43, 0.15) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        /* マスキングテープの共通パーツ */
+        .masking-tape {
+            background-color: rgba(216, 181, 138, 0.4);
+            backdrop-filter: blur(1px);
+            transform: rotate(-3deg);
+        }
+        /* スムーススクロール */
         html {
             scroll-behavior: smooth;
         }
-        .grid-border {
-            border-color: #E9E6E1;
-        }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased zine-grain">
 
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 w-full bg-justin-base border-b border-justin-gray px-4 md:px-8 py-4 flex justify-between items-center">
-        <div class="flex items-baseline gap-2">
-            <a href="#" class="font-inter font-black text-2xl tracking-tighter text-justin-main">just<span class="text-justin-accent">in</span></a>
-            <span class="hidden lg:inline text-xs text-justin-sub tracking-widest font-medium">現場伴走型ロジスティクス支援</span>
-        </div>
-        
-        <div class="flex items-center gap-8">
-            <div class="hidden md:flex items-center gap-6 text-xs font-bold tracking-wider text-justin-main">
-                <a href="#why" class="hover:text-justin-accent transition-colors">WHY</a>
-                <a href="#services" class="hover:text-justin-accent transition-colors">SERVICE</a>
-                <a href="#how-we-move" class="hover:text-justin-accent transition-colors">STANCE</a>
-                <a href="#value" class="hover:text-justin-accent transition-colors">VALUE</a>
-                <a href="#case" class="hover:text-justin-accent transition-colors">CASE</a>
-                <a href="#message" class="hover:text-justin-accent transition-colors">MESSAGE</a>
-            </div>
-            <a href="#contact" class="bg-justin-main text-white text-xs font-bold px-4 py-2.5 hover:bg-justin-accent transition-colors tracking-wider">
-                CONTACT
-            </a>
+    <!-- FIXED NAVIGATION -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#E7E2D9]/90 border-b-2 border-vbeat-black px-4 py-3 flex justify-between items-center">
+        <a href="#" class="font-heading text-lg md:text-xl tracking-tight text-vbeat-black hover:text-vbeat-red transition-colors">vintage beat</a>
+        <div class="flex items-center gap-6 font-heading text-[10px] tracking-widest">
+            <a href="#about" class="hover:text-vbeat-red">ABOUT</a>
+            <a href="#new-arrival" class="hover:text-vbeat-red">NEW</a>
+            <a href="#contact" class="bg-vbeat-black text-vbeat-paper px-3 py-1 hover:bg-vbeat-red transition-colors">SHOP</a>
         </div>
     </nav>
 
     <!-- ① HERO SECTION -->
-    <section class="w-full border-b border-justin-main bg-justin-white2">
-        <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-69px)]">
-            
-            <div class="lg:col-span-7 flex flex-col justify-between p-6 md:p-12 border-b lg:border-b-0 lg:border-r border-justin-main">
-                <div class="pt-4">
-                    <span class="font-inter font-extrabold text-xs tracking-widest text-justin-accent uppercase block mb-6">Corporate Profile</span>
-                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-justin-main leading-[1.15] tracking-tighter mb-8" data-aos="fade-up">
-                        止まりかけた現場に、<br class="hidden md:inline">突破力を。
-                    </h1>
+    <header class="relative min-h-screen pt-16 flex flex-col justify-between p-4 md:p-8 border-b-4 border-vbeat-black overflow-hidden bg-vbeat-paper">
+        <!-- 背景フライヤー・コラージュ感の演出 -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none flex flex-wrap gap-8 p-4 overflow-hidden">
+            <div class="text-9xl font-heading rotate-12 select-none">VINTAGE</div>
+            <div class="text-9xl font-heading -rotate-45 select-none text-vbeat-red">90S</div>
+            <div class="text-9xl font-heading rotate-6 select-none">BEAT</div>
+        </div>
+
+        <!-- 巨大タイポグラフィ -->
+        <div class="w-full my-auto z-10 pt-12">
+            <div class="relative inline-block">
+                <h1 class="font-heading text-[13vw] leading-[0.85] uppercase text-vbeat-black tracking-tighter">
+                    vintage<br><span class="text-vbeat-red">beat</span>
+                </h1>
+                <!-- 落書き風ステッカー風の添え文字 -->
+                <div class="absolute -right-4 md:-right-12 top-1/2 transform -translate-y-1/2 rotate-12 bg-vbeat-lime text-vbeat-black font-hand2 text-lg md:text-3xl px-3 py-1 border-2 border-vbeat-black uppercase">
+                    old vibes, new moves.
                 </div>
+            </div>
+
+            <div class="mt-8 max-w-xl space-y-4">
+                <p class="text-xl md:text-3xl font-bold tracking-wider text-vbeat-black leading-tight border-l-4 border-vbeat-black pl-4">
+                    出会った瞬間がビートになる。
+                </p>
+                <p class="text-xs md:text-sm text-vbeat-black/80 font-medium tracking-widest uppercase font-heading">
+                    find your Beat.
+                </p>
+            </div>
+        </div>
+
+        <!-- 下部エリア：カルチャーの断片（テキスト＆スクロール誘導） -->
+        <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-end z-10 gap-6 pt-6 border-t-2 border-vbeat-black/30">
+            <p class="text-xs max-w-md leading-relaxed font-medium">
+                古着 × ビートカルチャー。好きなものを着て、自分らしく踊るための特別な一着。流行に流されず、あなたのリズムでステップを刻もう。
+            </p>
+            <div class="font-heading text-xs tracking-widest flex items-center gap-2 text-vbeat-red animate-bounce">
+                ↓ DIG THE BEAT
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ② ABOUT SECTION -->
+    <section id="about" class="py-20 md:py-32 px-4 md:px-8 border-b-4 border-vbeat-black bg-white/40 relative">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            
+            <div class="md:col-span-7 space-y-6">
+                <div class="inline-block bg-vbeat-black text-vbeat-paper font-heading text-xs uppercase px-2 py-1 tracking-widest">
+                    Why Vintage?
+                </div>
+                <h2 class="text-xl md:text-2xl font-bold text-vbeat-black leading-snug">
+                    流行を追いかけるんじゃなくて、<br>自分のビートで踊りたい。
+                </h2>
+                <p class="text-sm md:text-base text-vbeat-black leading-loose font-medium space-y-4">
+                    vintage beat は、誰かと同じ服じゃ物足りないダンサー女子のための古着クローゼットです。<br><br>
+                    少し色あせた一枚に、あなたのステップが重なった瞬間、その服は世界にひとつの「ビート」になる。出会った瞬間から、ステージはもう始まってる。
+                </p>
+                <div class="font-hand1 text-3xl text-vbeat-blue transform -rotate-2 pt-4">
+                    style isn't bought. it's found. :-)
+                </div>
+            </div>
+
+            <!-- 右側：ポラロイド写真風カード（整列を崩した重ね配置） -->
+            <div class="md:col-span-5 relative flex justify-center pt-8 md:pt-0">
+                <div class="bg-white p-4 pb-12 border-2 border-vbeat-black transform rotate-3 max-w-[260px] shadow-none relative">
+                    <!-- マスキングテープ風装飾 -->
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 h-5 masking-tape bg-vbeat-lime/60"></div>
+                    <!-- 代替のダミーボックス（画像用） -->
+                    <div class="w-full aspect-square bg-vbeat-black flex items-center justify-center text-vbeat-paper text-xs font-heading p-4 text-center">
+                        [ DANCE VIBE PHOTO ]
+                    </div>
+                    <p class="font-hand2 text-center text-vbeat-black text-lg mt-4">90's Street Soul</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ③ CONCEPT SECTION -->
+    <section id="concept" class="py-20 md:py-32 px-4 md:px-8 border-b-4 border-vbeat-black bg-vbeat-paper relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-3xl md:text-5xl uppercase tracking-tighter text-vbeat-black">Our Value</h2>
+                <p class="font-hand1 text-2xl text-vbeat-red">4 beats we love</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-vbeat-paper border-2 border-vbeat-black p-6 flex flex-col justify-between min-h-[220px] transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                    <div>
+                        <span class="font-heading text-2xl text-vbeat-red block mb-2">01</span>
+                        <h3 class="font-heading text-lg uppercase tracking-tight text-vbeat-black mb-3">Be You.</h3>
+                    </div>
+                    <p class="text-xs leading-relaxed font-medium">誰かの真似じゃなく、自分が最高だと思える自分でいること。服はそのための相棒。</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-vbeat-paper border-2 border-vbeat-black p-6 flex flex-col justify-between min-h-[220px] transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                    <div>
+                        <span class="font-heading text-2xl text-vbeat-blue block mb-2">02</span>
+                        <h3 class="font-heading text-lg uppercase tracking-tight text-vbeat-black mb-3">Feel the Beat.</h3>
+                    </div>
+                    <p class="text-xs leading-relaxed font-medium">音楽や古着に出会って、心がハッとした瞬間のあの高鳴り・リズムを信じること。</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-vbeat-paper border-2 border-vbeat-black p-6 flex flex-col justify-between min-h-[220px] transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                    <div>
+                        <span class="font-heading text-2xl text-vbeat-purple block mb-2">03</span>
+                        <h3 class="font-heading text-lg uppercase tracking-tight text-vbeat-black mb-3">Stay Real.</h3>
+                    </div>
+                    <p class="text-xs leading-relaxed font-medium">少しの色あせや傷さえも、リアルを生きてきた証。不完全だからこそ愛おしい。</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-vbeat-paper border-2 border-vbeat-black p-6 flex flex-col justify-between min-h-[220px] transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                    <div>
+                        <span class="font-heading text-2xl text-vbeat-lime block mb-2">04</span>
+                        <h3 class="font-heading text-lg uppercase tracking-tight text-vbeat-black mb-3">Connect.</h3>
+                    </div>
+                    <p class="text-xs leading-relaxed font-medium">時代を超えて、カルチャーを愛する世界中の仲間たちとスピリットで繋がること。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ④ NEW ARRIVAL SECTION (雑誌切り抜き風・非整列) -->
+    <section id="new-arrival" class="py-20 md:py-32 px-4 md:px-8 border-b-4 border-vbeat-black bg-white/20">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex justify-between items-baseline mb-16 border-b-2 border-vbeat-black pb-4">
+                <h2 class="font-heading text-2xl md:text-4xl uppercase tracking-tight text-vbeat-black">Just In! <span class="font-hand1 text-xl md:text-2xl text-vbeat-red lowercase">new drop</span></h2>
+                <a href="#" class="font-heading text-[10px] tracking-widest text-vbeat-black border-2 border-vbeat-black px-3 py-1 hover:bg-vbeat-black hover:text-vbeat-paper transition-colors">VIEW ALL</a>
+            </div>
+
+            <!-- あえて不規則に配置するグリッド -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pt-6">
                 
-                <div class="border-t-2 border-justin-main pt-6 mt-8">
-                    <p class="text-sm font-bold text-justin-sub tracking-wider mb-2">
-                        必要な瞬間に、ちゃんと届く。
-                    </p>
-                    <p class="text-sm md:text-base font-medium text-justin-main leading-relaxed max-w-xl">
-                        現場の熱量を止めないために、私たちは今、動きます。単なる物流支援ではなく、再び前を向ける状態へ動かしていく現場伴走型支援。
-                    </p>
-                </div>
-            </div>
-
-            <div class="lg:col-span-5 grid grid-rows-2 h-full min-h-[400px] lg:min-h-0 bg-justin-main">
-                <div class="relative overflow-hidden border-b border-justin-main">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop" 
-                         alt="just in 現場物流" 
-                         class="w-full h-full object-cover grayscale opacity-80 hover:scale-105 transition-transform duration-700">
-                    <div class="absolute bottom-3 left-3 bg-justin-accent text-justin-main text-[10px] font-inter font-black px-2 py-0.5 uppercase tracking-widest">
-                        01 / MOVEMENT
+                <!-- Item 1 (やや左に傾く) -->
+                <div class="transform -rotate-2 space-y-4">
+                    <div class="bg-vbeat-paper border-2 border-vbeat-black p-2 relative">
+                        <div class="absolute -top-3 left-4 w-16 h-5 masking-tape"></div>
+                        <div class="w-full aspect-[3/4] bg-vbeat-black/80 flex items-center justify-center text-vbeat-paper font-heading text-xs">
+                            [ 90s Bomber Jacket ]
+                        </div>
+                        <span class="absolute top-4 right-4 bg-vbeat-red text-vbeat-paper font-heading text-[9px] tracking-widest px-2 py-0.5">SOLD</span>
                     </div>
-                </div>
-                <div class="relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1000&auto=format&fit=crop" 
-                         alt="just in 輸送・スピード感" 
-                         class="w-full h-full object-cover grayscale opacity-70 hover:scale-105 transition-transform duration-700">
-                    <div class="absolute bottom-3 left-3 bg-justin-main text-white text-[10px] font-inter font-black px-2 py-0.5 uppercase tracking-widest border border-white/20">
-                        just<span class="text-justin-accent">in</span> / 02
+                    <div class="flex justify-between items-start px-2">
+                        <div>
+                            <h3 class="font-bold text-sm text-vbeat-black">90s Vintage Nylon Bomber</h3>
+                            <p class="text-xs text-vbeat-black/60 font-hand2">one of a kind</p>
+                        </div>
+                        <span class="font-heading text-xs text-vbeat-red">¥8,900</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ② WHY SECTION -->
-    <section id="why" class="w-full border-b border-justin-main py-16 md:py-24 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <div class="lg:col-span-4 lg:sticky lg:top-24">
-                    <span class="font-inter font-bold text-xs tracking-widest text-justin-accent block mb-2">WHY WE EXIST</span>
-                    <h2 class="text-2xl md:text-4xl font-black text-justin-main tracking-tight">なぜ just in は<br class="hidden lg:inline">動くのか</h2>
-                    <div class="w-12 h-1 bg-justin-accent mt-4"></div>
                 </div>
 
-                <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8 bg-justin-white2 p-6 md:p-8 border border-justin-gray">
-                    <div class="space-y-6" data-aos="fade-up">
-                        <span class="text-[10px] font-inter font-bold text-white bg-justin-sub px-2 py-1 uppercase tracking-wider inline-block">The Background</span>
-                        <h3 class="text-lg font-bold text-justin-main leading-snug">小規模物流会社が抱える、<br>疲弊と属人化、現場停滞。</h3>
-                        <p class="text-sm leading-relaxed text-justin-main/80">
-                            人手不足、高まる需要、休めない現場。多くの現場がギリギリの熱量で耐えています。しかし、システム導入やコンサルタントの正論だけでは、明日の荷物は動きません。
-                        </p>
+                <!-- Item 2 (やや上にズレて右に傾く) -->
+                <div class="transform rotate-3 md:-translate-y-6 space-y-4">
+                    <div class="bg-vbeat-paper border-2 border-vbeat-black p-2 relative">
+                        <div class="absolute -top-2 right-6 w-12 h-4 masking-tape bg-vbeat-blue/40"></div>
+                        <div class="w-full aspect-[3/4] bg-vbeat-black/80 flex items-center justify-center text-vbeat-paper font-heading text-xs">
+                            [ Ovesized Band Tee ]
+                        </div>
                     </div>
-                    <div class="space-y-6" data-aos="fade-up" data-aos-delay="100">
-                        <span class="text-[10px] font-inter font-bold text-white bg-justin-main px-2 py-1 uppercase tracking-wider inline-block">Our Thought</span>
-                        <h3 class="text-lg font-bold text-justin-main leading-snug">“現場を止めたくない”<br>その一心で、私たちは伴走する。</h3>
-                        <p class="text-sm leading-relaxed text-justin-main/80">
-                            私たちは離れたオフィスから指示を出す存在ではありません。現場の熱量を止めず、再び前を向ける状態へ動かしていく。泥くさく、しかし徹底的に整理された手法で道を切り拓きます。
-                        </p>
+                    <div class="flex justify-between items-start px-2">
+                        <div>
+                            <h3 class="font-bold text-sm text-vbeat-black">80s Rock Spirit Over Tee</h3>
+                            <p class="text-xs text-vbeat-black/60 font-hand2">faded & perfect</p>
+                        </div>
+                        <span class="font-heading text-xs text-vbeat-black">¥6,200</span>
                     </div>
                 </div>
+
+                <!-- Item 3 (ストレートで少し下にズレる) -->
+                <div class="transform md:translate-y-4 space-y-4">
+                    <div class="bg-vbeat-paper border-2 border-vbeat-black p-2 relative">
+                        <div class="w-full aspect-[3/4] bg-vbeat-black/80 flex items-center justify-center text-vbeat-paper font-heading text-xs">
+                            [ Wide Cargo Pants ]
+                        </div>
+                        <span class="absolute top-4 left-4 bg-vbeat-lime text-vbeat-black font-heading text-[9px] tracking-widest px-2 py-0.5">NEW</span>
+                    </div>
+                    <div class="flex justify-between items-start px-2">
+                        <div>
+                            <h3 class="font-bold text-sm text-vbeat-black">Oldschool Baggy Cargo</h3>
+                            <p class="text-xs text-vbeat-black/60 font-hand2">ready to move</p>
+                        </div>
+                        <span class="font-heading text-xs text-vbeat-black">¥7,800</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ③ WHAT WE DO SECTION -->
-    <section id="services" class="w-full bg-justin-main text-white py-16 md:py-24 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="mb-12">
-                <span class="font-inter font-bold text-xs tracking-widest text-justin-accent block mb-2">WHAT WE DO</span>
-                <h2 class="text-2xl md:text-4xl font-black tracking-tight">現場を前に進める支援</h2>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
-                <div class="p-6 md:p-8 border-r border-b border-white/10 hover:bg-white/5 transition-colors" data-aos="fade-up">
-                    <div class="text-justin-accent mb-4"><i data-lucide="package-check" class="w-8 h-8"></i></div>
-                    <h3 class="text-lg font-bold mb-3 tracking-wide">業務支援</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">現場の負担をその場で軽減。実務に直結する即戦力としてのリソースを提供し、稼働の穴を埋めます。</p>
-                </div>
-                <div class="p-6 md:p-8 border-r border-b border-white/10 hover:bg-white/5 transition-colors" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-justin-accent mb-4"><i data-lucide="shuffle" class="w-8 h-8"></i></div>
-                    <h3 class="text-lg font-bold mb-3 tracking-wide">物流マッチング</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">小回りの利くネットワークを活用し、必要な瞬間に最適なリソースとルートを瞬時に結びつけます。</p>
-                </div>
-                <div class="p-6 md:p-8 border-r border-b border-white/10 hover:bg-white/5 transition-colors" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-justin-accent mb-4"><i data-lucide="trending-up" class="w-8 h-8"></i></div>
-                    <h3 class="text-lg font-bold mb-3 tracking-wide">現場改善</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">動線を見直し、無駄を削ぎ落とす。綺麗事ではない、明日から機能するリアルな現場最適化を施します。</p>
-                </div>
-                <div class="p-6 md:p-8 border-r border-b border-white/10 hover:bg-white/5 transition-colors" data-aos="fade-up">
-                    <div class="text-justin-accent mb-4"><i data-lucide="cpu" class="w-8 h-8"></i></div>
-                    <h3 class="text-lg font-bold mb-3 tracking-wide">AI活用支援</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">最先端を野暮ったくなく取り入れる。現場が迷わず使える、実用本位のIT・AIツール導入を推進します。</p>
-                </div>
-                <div class="p-6 md:p-8 border-r border-b border-white/10 hover:bg-white/5 transition-colors" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-justin-accent mb-4"><i data-lucide="layers" class="w-8 h-8"></i></div>
-                    <h3 class="text-lg font-bold mb-3 tracking-wide">業務整理</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">属人化してブラックボックスとなった作業をクリアに可視化。誰でも動かせる仕組みへ再配置します。</p>
-                </div>
-                <div class="p-6 md:p-8 border-r border-b border-white/10 hover:bg-white/5 transition-colors" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-justin-accent mb-4"><i data-lucide="users" class="w-8 h-8"></i></div>
-                    <h3 class="text-lg font-bold mb-3 tracking-wide">人と人をつなぐ調整</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">現場の衝突や連携不足を人間力で解決。現場で対話を重ね、チーム全体の潤滑油として機能します。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ④ HOW WE MOVE SECTION -->
-    <section id="how-we-move" class="w-full bg-justin-white2 border-b border-justin-main py-16 md:py-24 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
-                <div class="lg:col-span-6">
-                    <span class="font-inter font-bold text-xs tracking-widest text-justin-accent block mb-2">OUR STANCE</span>
-                    <h2 class="text-2xl md:text-4xl font-black tracking-tight text-justin-main">机上ではなく、現場で考える。</h2>
-                </div>
-                <div class="lg:col-span-6 lg:text-right">
-                    <p class="text-sm font-medium text-justin-sub">言葉だけでなく、速度と小回りで体現する5つの行動指針。</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border-t border-l border-justin-gray">
-                <div class="p-6 md:p-8 bg-white border-r border-b border-justin-gray flex flex-col justify-between min-h-[200px] sm:min-h-[220px]">
-                    <span class="font-inter font-black text-4xl text-justin-accent/30">01</span>
-                    <div>
-                        <h3 class="font-bold text-xl md:text-2xl text-justin-main mb-3">小回り</h3>
-                        <p class="text-sm text-justin-sub leading-relaxed">大手が断る隙間を埋める機動力。</p>
-                    </div>
-                </div>
-                <div class="p-6 md:p-8 bg-white border-r border-b border-justin-gray flex flex-col justify-between min-h-[200px] sm:min-h-[220px]">
-                    <span class="font-inter font-black text-4xl text-justin-accent">02</span>
-                    <div>
-                        <h3 class="font-bold text-xl md:text-2xl text-justin-main mb-3">即対応</h3>
-                        <p class="text-sm text-justin-sub leading-relaxed">検討で時間を溶かさず、すぐ動く。</p>
-                    </div>
-                </div>
-                <div class="p-6 md:p-8 bg-white border-r border-b border-justin-gray flex flex-col justify-between min-h-[200px] sm:min-h-[220px]">
-                    <span class="font-inter font-black text-4xl text-justin-accent/30">03</span>
-                    <div>
-                        <h3 class="font-bold text-xl md:text-2xl text-justin-main mb-3">人間力</h3>
-                        <p class="text-sm text-justin-sub leading-relaxed">最後は人と人の信頼。誠実に向き合う。</p>
-                    </div>
-                </div>
-                <div class="p-6 md:p-8 bg-white border-r border-b border-justin-gray flex flex-col justify-between min-h-[200px] sm:min-h-[220px]">
-                    <span class="font-inter font-black text-4xl text-justin-accent/30">04</span>
-                    <div>
-                        <h3 class="font-bold text-xl md:text-2xl text-justin-main mb-3">柔軟性</h3>
-                        <p class="text-sm text-justin-sub leading-relaxed">ルールに縛られず、現場最適を優先。</p>
-                    </div>
-                </div>
-                <div class="p-6 md:p-8 bg-white border-r border-b border-justin-gray flex flex-col justify-between min-h-[200px] sm:min-h-[220px] sm:col-span-2 lg:col-span-1">
-                    <span class="font-inter font-black text-4xl text-justin-accent/30">05</span>
-                    <div>
-                        <h3 class="font-bold text-xl md:text-2xl text-justin-main mb-3">社会貢献</h3>
-                        <p class="text-sm text-justin-sub leading-relaxed">物流のインフラの底を、静かに支える。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ⑤ VALUE SECTION -->
-    <section id="value" class="w-full bg-justin-main text-white py-20 px-4 md:px-8 relative overflow-hidden">
-        <div class="absolute inset-0 font-inter font-black text-[12vw] text-white/[0.02] uppercase select-none pointer-events-none whitespace-nowrap -left-10 -bottom-10">
-            KEEP MOVING FORWARD
-        </div>
-
-        <div class="max-w-5xl mx-auto relative z-10 text-center">
-            <span class="font-inter font-bold text-xs tracking-widest text-justin-accent block mb-6">OUR VALUE</span>
-            <h2 class="text-2xl md:text-4xl font-black mb-16 tracking-tight">私たちが止めたくないもの</h2>
-            
-            <div class="flex flex-wrap justify-center gap-x-12 gap-y-8 md:gap-y-12 max-w-4xl mx-auto">
-                <div class="text-center group" data-aos="zoom-in">
-                    <div class="text-3xl md:text-5xl font-black tracking-tight text-white mb-2 group-hover:text-justin-accent transition-colors">熱量</div>
-                    <div class="text-[10px] uppercase font-inter tracking-widest text-justin-sub">01 / PASSION</div>
-                </div>
-                <div class="text-center group" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-3xl md:text-5xl font-black tracking-tight text-white mb-2 group-hover:text-justin-accent transition-colors">信頼</div>
-                    <div class="text-[10px] uppercase font-inter tracking-widest text-justin-sub">02 / TRUST</div>
-                </div>
-                <div class="text-center group" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-3xl md:text-5xl font-black tracking-tight text-white mb-2 group-hover:text-justin-accent transition-colors">誇り</div>
-                    <div class="text-[10px] uppercase font-inter tracking-widest text-justin-sub">03 / PRIDE</div>
-                </div>
-                <div class="text-center group" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="text-3xl md:text-5xl font-black tracking-tight text-white mb-2 group-hover:text-justin-accent transition-colors">人</div>
-                    <div class="text-[10px] uppercase font-inter tracking-widest text-justin-sub">04 / HUMAN</div>
-                </div>
-                <div class="text-center group" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="text-3xl md:text-5xl font-black tracking-tight text-white mb-2 group-hover:text-justin-accent transition-colors">継続</div>
-                    <div class="text-[10px] uppercase font-inter tracking-widest text-justin-sub">05 / CONTINUATION</div>
-                </div>
-                <div class="text-center group" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="text-3xl md:text-5xl font-black tracking-tight text-white mb-2 group-hover:text-justin-accent transition-colors">貢献</div>
-                    <div class="text-[10px] uppercase font-inter tracking-widest text-justin-sub">06 / CONTRIBUTION</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ⑥ CASE SECTION -->
-    <section id="case" class="w-full border-b border-justin-main py-16 md:py-24 px-4 md:px-8">
+    <!-- ⑤ MOOD BOARD SECTION (Pinterest / ZINEライクな乱雑コラージュ) -->
+    <section id="moodboard" class="py-20 md:py-32 px-4 md:px-8 border-b-4 border-vbeat-black bg-vbeat-paper overflow-hidden relative">
         <div class="max-w-6xl mx-auto">
             <div class="mb-12">
-                <span class="font-inter font-bold text-xs tracking-widest text-justin-accent block mb-2">CASE STUDIES</span>
-                <h2 class="text-2xl md:text-4xl font-black tracking-tight text-justin-main">現場の変化</h2>
+                <span class="font-hand2 text-2xl text-vbeat-purple block">visual identity</span>
+                <h2 class="font-heading text-2xl md:text-4xl uppercase tracking-tight text-vbeat-black">Mood Board</h2>
             </div>
 
-            <div class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-12 border border-justin-gray bg-white" data-aos="fade-up">
-                    <div class="md:col-span-2 bg-justin-main text-white p-4 flex flex-col justify-center items-center md:items-start border-b md:border-b-0 md:border-r border-justin-gray">
-                        <span class="text-[10px] font-inter tracking-widest uppercase text-gray-400">CASE 01</span>
-                        <span class="font-bold text-sm mt-1">リソース最適化</span>
-                    </div>
-                    <div class="md:col-span-5 p-6 bg-justin-main/[0.03] flex items-start gap-4">
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-gray-400 text-white uppercase rounded-sm">BEFORE</span>
-                        <div>
-                            <h4 class="font-bold text-justin-main mb-1 text-sm">現場疲弊と属人化</h4>
-                            <p class="text-sm text-justin-sub leading-relaxed">特定のリーダーにのみ負担がかかり、体調不良者が出た瞬間に機能停止しかけていた過酷な現場。</p>
-                        </div>
-                    </div>
-                    <div class="hidden md:flex md:col-span-1 justify-center items-center text-justin-accent bg-justin-white2">
-                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                    </div>
-                    <div class="md:col-span-4 p-6 bg-justin-accent/10 flex items-start gap-4 border-t md:border-t-0 border-justin-gray">
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-justin-accent text-white uppercase rounded-sm">AFTER</span>
-                        <div>
-                            <h4 class="font-bold text-justin-main mb-1 text-sm">流れの劇的な改善</h4>
-                            <p class="text-sm text-justin-main font-medium leading-relaxed">実務整理とAIによるタスク可視化を行い、属人化を排除。全員が等しく動ける健やかな現場へ変革。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-12 border border-justin-gray bg-white" data-aos="fade-up" data-aos-delay="100">
-                    <div class="md:col-span-2 bg-justin-main text-white p-4 flex flex-col justify-center items-center md:items-start border-b md:border-b-0 md:border-r border-justin-gray">
-                        <span class="text-[10px] font-inter tracking-widest uppercase text-gray-400">CASE 02</span>
-                        <span class="font-bold text-sm mt-1">コミュニケーション</span>
-                    </div>
-                    <div class="md:col-span-5 p-6 bg-justin-main/[0.03] flex items-start gap-4">
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-gray-400 text-white uppercase rounded-sm">BEFORE</span>
-                        <div>
-                            <h4 class="font-bold text-justin-main mb-1 text-sm">連携不足と空気の悪化</h4>
-                            <p class="text-sm text-justin-sub leading-relaxed">事務所とドライバー、庫内スタッフ間で情報が分断され、ミスが起きてもなすりつけ合う冷え切った状態。</p>
-                        </div>
-                    </div>
-                    <div class="hidden md:flex md:col-span-1 justify-center items-center text-justin-accent bg-justin-white2">
-                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                    </div>
-                    <div class="md:col-span-4 p-6 bg-justin-accent/10 flex items-start gap-4 border-t md:border-t-0 border-justin-gray">
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-justin-accent text-white uppercase rounded-sm">AFTER</span>
-                        <div>
-                            <h4 class="font-bold text-justin-main mb-1 text-sm">会話と笑顔の総量増加</h4>
-                            <p class="text-sm text-justin-main font-medium leading-relaxed">私たちが中間に立ち、現場で対話を重ね、チーム全体の潤滑油として機能。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-12 border border-justin-gray bg-white" data-aos="fade-up" data-aos-delay="200">
-                    <div class="md:col-span-2 bg-justin-main text-white p-4 flex flex-col justify-center items-center md:items-start border-b md:border-b-0 md:border-r border-justin-gray">
-                        <span class="text-[10px] font-inter tracking-widest uppercase text-gray-400">CASE 03</span>
-                        <span class="font-bold text-sm mt-1">マインドセット</span>
-                    </div>
-                    <div class="md:col-span-5 p-6 bg-justin-main/[0.03] flex items-start gap-4">
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-gray-400 text-white uppercase rounded-sm">BEFORE</span>
-                        <div>
-                            <h4 class="font-bold text-justin-main mb-1 text-sm">慢性的停滞感</h4>
-                            <p class="text-sm text-justin-sub leading-relaxed">「どうせ変わらない」「うちのような規模では無理だ」と、会社全体に諦めムードが漂っていた停滞期。</p>
-                        </div>
-                    </div>
-                    <div class="hidden md:flex md:col-span-1 justify-center items-center text-justin-accent bg-justin-white2">
-                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                    </div>
-                    <div class="md:col-span-4 p-6 bg-justin-accent/10 flex items-start gap-4 border-t md:border-t-0 border-justin-gray">
-                        <span class="text-[10px] font-bold px-2 py-0.5 bg-justin-accent text-white uppercase rounded-sm">AFTER</span>
-                        <div>
-                            <h4 class="font-bold text-justin-main mb-1 text-sm">前向きで圧倒的な熱量</h4>
-                            <p class="text-sm text-justin-main font-medium leading-relaxed">小さな成功体験を現場と共に積み重ねることで、スタッフから自発的な改善案が飛び出すほどの活気を奪還。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ⑦ MESSAGE SECTION -->
-    <section id="message" class="w-full bg-justin-white2 py-16 md:py-24 px-4 md:px-8 border-b border-justin-main">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+            <!-- スマホではスライダー風、PCではコラージュ配置になる自由レイアウト -->
+            <div class="relative min-h-[500px] grid grid-cols-2 md:block gap-4">
                 
-                <div class="md:col-span-5" data-aos="fade-right">
-                    <div class="border border-justin-main p-2 bg-white shadow-md">
-                        <div class="relative overflow-hidden aspect-[4/5] bg-justin-gray">
-                            <img src="https://images.unsplash.com/photo-1521898284481-a5ec348cb555?q=80&w=800&auto=format&fit=crop" 
-                                 alt="just in 代表メッセージイメージ" 
-                                 class="w-full h-full object-cover grayscale opacity-90">
-                        </div>
-                    </div>
+                <!-- PC用絶対配置コラージュ（スマホ時は通常フローでグリッド化） -->
+                <div class="md:absolute md:top-4 md:left-0 bg-vbeat-black text-vbeat-paper p-8 border-2 border-vbeat-black md:w-64 transform md:-rotate-6 flex flex-col justify-between aspect-square">
+                    <span class="font-heading text-xl leading-none">DIG THE<br>BEAT.</span>
+                    <span class="font-hand1 text-right text-vbeat-lime text-xl">wear the vibe.</span>
                 </div>
 
-                <div class="md:col-span-7 space-y-6" data-aos="fade-left">
-                    <span class="font-inter font-bold text-xs tracking-widest text-justin-accent block uppercase">MESSAGE</span>
-                    <h2 class="text-2xl md:text-3xl font-black text-justin-main tracking-tight">
-                        「放っておけない」が、<br>すべての始まりでした。
-                    </h2>
-                    
-                    <div class="space-y-4 text-sm leading-loose text-justin-main/90 font-medium">
-                        <p>
-                            物流の現場は美辞麗句だけでは回りません。泥をかぶり、汗を流し、ギリギリの状態で踏みとどまっている小規模物流会社の皆様を、私は数多く見てきました。
-                        </p>
-                        <p>
-                            長年の現場経験の中で培ったのは、「どんなに厳しい状況でも必ず突破口はある」という確信です。効率化のシステム導入やコンサルタントの正論だけでは、明日の荷物は動きません。あなたと同じ目線で汗を流し、責任を持って伴走する存在でありたい。
-                        </p>
-                        <p>
-                            たとえギリギリの状況であっても、私たちは絶対に目を離しません。現場の熱量こそが、日本の物流を支える最大の資産だからです。もう一度、一緒に前を向きましょう。
-                        </p>
-                    </div>
-
-                    <div class="pt-4 border-t border-justin-gray flex justify-between items-baseline">
-                        <span class="text-xs text-justin-sub font-inter uppercase font-bold tracking-widest">just in Representative</span>
-                        <span class="font-bold text-lg tracking-wide text-justin-main">just in 代表</span>
-                    </div>
+                <div class="md:absolute md:top-12 md:left-72 bg-white p-2 border-2 border-vbeat-black md:w-52 transform md:rotate-3">
+                    <div class="w-full aspect-[4/3] bg-vbeat-blue/40 flex items-center justify-center font-heading text-[10px] text-center p-2">[ RECORD SHOP ]</div>
                 </div>
+
+                <div class="md:absolute md:top-48 md:right-12 bg-white p-2 border-2 border-vbeat-black md:w-60 transform md:-rotate-3">
+                    <div class="w-full aspect-square bg-vbeat-purple/30 flex items-center justify-center font-heading text-[10px] text-center p-2">[ STREET DANCER ]</div>
+                </div>
+
+                <div class="md:absolute md:bottom-4 md:left-40 bg-vbeat-red text-vbeat-paper p-4 border-2 border-vbeat-black md:w-48 transform md:rotate-12 font-heading text-center text-xs tracking-widest py-8">
+                    ★ ONLY ONE ★<br>GIRL POWER
+                </div>
+
+                <div class="md:absolute md:bottom-12 md:right-80 bg-white p-2 border-2 border-vbeat-black md:w-56 transform md:-rotate-12">
+                    <div class="w-full aspect-[3/4] bg-vbeat-lime/40 flex items-center justify-center font-heading text-[10px] text-center p-2">[ VINTAGE TEE CLOSET ]</div>
+                </div>
+
+                <!-- 丸型ステッカー表現 -->
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-vbeat-lime rounded-full border-2 border-vbeat-black hidden md:flex flex-col items-center justify-center text-center p-2 rotate-45 z-10">
+                    <span class="font-heading text-[10px] text-vbeat-black leading-none">VINTAGE<br>BEAT</span>
+                    <span class="font-hand2 text-xs text-vbeat-red">est. 2026</span>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ⑧ CONTACT SECTION -->
-    <section id="contact" class="w-full bg-justin-main text-white py-16 md:py-20 px-4 md:px-8 text-center">
-        <div class="max-w-3xl mx-auto" data-aos="zoom-in">
-            <span class="font-inter font-bold text-xs tracking-widest text-justin-accent block mb-4 uppercase">GET IN TOUCH</span>
-            <h2 class="text-xl md:text-3xl font-bold tracking-tight mb-8 leading-relaxed">
-                止まりかけていることがあれば、<br class="md:hidden">まずは聞かせてください。
+
+    <!-- ⑥ STORY SECTION -->
+    <section id="story" class="py-24 md:py-40 border-b-4 border-vbeat-black bg-white/60">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-8">
+            <span class="font-heading text-vbeat-red text-sm tracking-widest block uppercase">find your Beat.</span>
+            
+            <h2 class="font-heading text-3xl md:text-5xl text-vbeat-black uppercase tracking-tight leading-none">
+                古着を着ることは、<br>誰かになることではなく、<br><span class="text-vbeat-blue">自分になること。</span>
             </h2>
-            <p class="text-sm text-gray-400 mb-12 max-w-xl mx-auto leading-loose">
-                相談窓口を狭めたくありません。かしこまったフォームでなくても結構です。現場の「困った」を、今すぐお伝えください。
-            </p>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto text-sm font-bold">
-                <a href="https://lin.ee/XOs6qml" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-[#24A148] hover:bg-[#1C8439] text-white py-3.5 px-4 transition-colors">
-                    <!-- インラインSVGに変更して表示崩れを防止 -->
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.564.39.084.922.258 1.058.592.122.303.08.777.04 1.084l-.169 1.023c-.05.303-.243 1.185 1.048.646 1.291-.539 6.957-4.099 9.485-7.016 2.499-2.884 2.494-5.893 2.494-5.893zm-16.712 3.16h-1.638a.514.514 0 01-.514-.514v-4.148a.514.514 0 01.514-.514h.341a.514.514 0 01.514.514v3.292h.783a.514.514 0 01.514.514v.341a.515.515 0 01-.514.515zm2.934 0h-.342a.515.515 0 01-.514-.514v-4.148a.514.514 0 01.514-.514h.342c.284 0 .514.23.514.514v4.148a.514.514 0 01-.514.514zm3.922 0h-.385a.517.517 0 01-.417-.213l-1.921-2.529v2.228a.514.514 0 01-.514.514h-.341a.514.514 0 01-.514-.514v-4.148a.514.514 0 01.514-.514h.387c.16 0 .31.073.414.199l1.921 2.531v-2.216a.514.514 0 01.514-.514h.341a.514.514 0 01.514.514v4.148a.514.514 0 01-.516.516zm3.996-.856a.514.514 0 01-.514.514h-1.649a.514.514 0 01-.514-.514v-4.148a.514.514 0 01.514-.514h1.649a.514.514 0 01.514.514v.341a.514.514 0 01-.514.514h-.794v.693h.794a.514.514 0 01.514.514v.341a.514.514 0 01-.514.514h-.794v.74h.794a.514.514 0 01.514.514v.341z"/></svg>
-                    LINE相談
-                </a>
-                <a href="mailto:support@justin-logi.jp" class="flex items-center justify-center gap-2 bg-justin-accent hover:bg-justin-accent/90 text-justin-main py-3.5 px-4 transition-colors">
-                    <i data-lucide="mail" class="w-4 h-4"></i>
-                    メール相談
-                </a>
-                <a href="https://forms.gle/y8tYJfmLAPGDFZsX8" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white py-3.5 px-4 border border-white/20 transition-colors">
-                    <i data-lucide="file-text" class="w-4 h-4"></i>
-                    Webフォーム
-                </a>
+            <div class="max-w-xl mx-auto text-sm md:text-base text-vbeat-black/90 leading-loose font-medium space-y-6 pt-6 border-t-2 border-vbeat-black/10">
+                <p>
+                    誰かの決めたルールや流行のステップに合わせる必要なんてない。<br>
+                    ヴィンテージの放つ、少し不完全で、力強いエネルギーを身にまとって。
+                </p>
+                <p class="font-bold text-vbeat-black text-lg">
+                    自分のリズムで、自分の人生を躍ろう。
+                </p>
             </div>
-            <p class="mt-8 text-[11px] text-gray-500 font-inter uppercase tracking-widest">support@justin-logi.jp</p>
         </div>
     </section>
 
-    <!-- ⑨ FOOTER SECTION -->
-    <footer class="w-full bg-justin-main text-gray-400 py-12 px-4 md:px-8 border-t border-white/10 text-xs">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left space-y-2">
-                <span class="font-inter font-black text-2xl text-white tracking-tighter block">just<span class="text-justin-accent">in</span></span>
-                <p class="text-gray-500 font-medium text-[11px] tracking-wider">必要な瞬間に、ちゃんと届く。</p>
+
+    <!-- ⑦ INSTAGRAM SECTION -->
+    <section id="instagram" class="py-16 px-4 md:px-8 border-b-4 border-vbeat-black bg-vbeat-paper">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <div class="flex justify-between items-center">
+                <span class="font-heading text-sm text-vbeat-black tracking-widest">@vintagebeat_official</span>
+                <span class="font-hand2 text-lg text-vbeat-red">join our culture</span>
             </div>
             
-            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-[11px] tracking-wider font-medium">
-                <p>© 2026 just in. All rights reserved.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="border-2 border-vbeat-black aspect-square bg-vbeat-black/90 flex items-center justify-center font-heading text-[10px] text-vbeat-paper">[ IG_01 ]</div>
+                <div class="border-2 border-vbeat-black aspect-square bg-vbeat-black/90 flex items-center justify-center font-heading text-[10px] text-vbeat-paper">[ IG_02 ]</div>
+                <div class="border-2 border-vbeat-black aspect-square bg-vbeat-black/90 flex items-center justify-center font-heading text-[10px] text-vbeat-paper">[ IG_03 ]</div>
+                <div class="border-2 border-vbeat-black aspect-square bg-vbeat-black/90 flex items-center justify-center font-heading text-[10px] text-vbeat-paper">[ IG_04 ]</div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- 6. Scripts (すべてのHTML要素が描画し終わるボディの最下部で実行) -->
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- AOS Animation JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
-        // 外部スクリプトの読み込み完了を安全に待ってから実行
-        window.addEventListener('DOMContentLoaded', (event) => {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    once: true,
-                    offset: 60,
-                    duration: 800,
-                    easing: 'ease-out-cubic'
-                });
-            }
-        });
-    </script>
+
+    <!-- ⑧ CONTACT SECTION & FOOTER -->
+    <section id="contact" class="py-20 md:py-32 px-4 md:px-8 bg-vbeat-black text-vbeat-paper relative">
+        <div class="max-w-4xl mx-auto text-center space-y-12">
+            
+            <div class="space-y-4">
+                <h2 class="font-heading text-4xl md:text-6xl text-vbeat-paper uppercase tracking-tighter">Connect Us</h2>
+                <p class="font-hand1 text-2xl text-vbeat-lime">let's talk about music, dance, and clothes.</p>
+            </div>
+
+            <!-- UIルール：シンプルでホバー時にズレるストリートなボタン -->
+            <div class="flex flex-wrap justify-center gap-6 pt-6">
+                
+                <!-- INSTAGRAM LINK -->
+                <a href="#" class="group relative inline-block font-heading text-xs tracking-widest px-8 py-4 bg-vbeat-red text-vbeat-paper border-2 border-vbeat-paper transition-transform">
+                    <span class="absolute inset-0 bg-vbeat-paper transform translate-x-0 translate-y-0 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform -z-10"></span>
+                    INSTAGRAM
+                </a>
+
+                <!-- ONLINE SHOP LINK -->
+                <a href="#" class="group relative inline-block font-heading text-xs tracking-widest px-8 py-4 bg-vbeat-blue text-vbeat-paper border-2 border-vbeat-paper transition-transform">
+                    <span class="absolute inset-0 bg-vbeat-lime transform translate-x-0 translate-y-0 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform -z-10 text-vbeat-black"></span>
+                    ONLINE SHOP
+                </a>
+
+                <!-- EMAIL LINK -->
+                <a href="mailto:hello@vintagebeat.com" class="group relative inline-block font-heading text-xs tracking-widest px-8 py-4 bg-transparent text-vbeat-paper border-2 border-vbeat-paper transition-transform">
+                    <span class="absolute inset-0 bg-vbeat-purple transform translate-x-0 translate-y-0 group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform -z-10"></span>
+                    SEND EMAIL
+                </a>
+
+            </div>
+
+            <!-- FOOTER INFO -->
+            <div class="pt-20 border-t border-vbeat-paper/20 flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest font-heading gap-4 text-vbeat-paper/60">
+                <p>VINTAGE BEAT ｜ CULTURAL CLOSET FOR DANCERS</p>
+                <p>© 2026 VINTAGE BEAT ALL RIGHTS RESERVED.</p>
+            </div>
+
+        </div>
+    </section>
+
 </body>
 </html>
